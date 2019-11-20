@@ -54,4 +54,30 @@
   [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
+- (void) pauseLoop:(CDVInvokedUrlCommand*)command{
+  CDVPluginResult* pluginResult = nil;
+
+  if (self.detector) {
+    [self.detector pauseLoop];
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+  } else {
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+  }
+
+  [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+- (void) resumeLoop:(CDVInvokedUrlCommand*)command{
+  CDVPluginResult* pluginResult = nil;
+
+  if (self.detector) {
+    [self.detector resumeLoop];
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+  } else {
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+  }
+
+  [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
 @end

@@ -50,9 +50,13 @@ void SharkfoodSoundMuteNotificationCompletionProc(SystemSoundID  ssID,void* clie
  */
 -(void)scheduleCall;
 /**
- Is paused?
+ Is paused? this pauses if the app is in the background
  */
 @property (nonatomic,assign) BOOL isPaused;
+/**
+ Is isLoopPaused? turns off the check via external means
+ */
+@property (nonatomic,assign) BOOL isLoopPaused;
 /**
  Currently playing? used when returning from the background (if went to background and foreground really quickly)
 */
@@ -86,6 +90,7 @@ void SharkfoodSoundMuteNotificationCompletionProc(SystemSoundID  ssID,void* clie
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEnterBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willReturnToForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
     }
+    self.isLoopPaused = NO;
     return self;
 }
 
@@ -130,8 +135,20 @@ void SharkfoodSoundMuteNotificationCompletionProc(SystemSoundID  ssID,void* clie
     [self scheduleCall];
 }
 
+
+- (void)pauseLoop{
+    self.isLoopPaused = YES;
+}
+
+-(void)resumeLoop{
+    self.isLoopPaused = NO;
+    if (!self.isPlaying && !self.isPaused){
+        [self scheduleCall];
+    }
+}
+
 -(void)loopCheck{
-    if (!self.isPaused){
+    if (!self.isPaused && !self.isLoopPaused){
         self.interval = [NSDate timeIntervalSinceReferenceDate];
         self.isPlaying = YES;
         AudioServicesPlaySystemSound(self.soundId);

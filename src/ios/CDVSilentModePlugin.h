@@ -35,5 +35,7 @@
 
 - (void)init:(CDVInvokedUrlCommand*)command;
 - (void)isMuted:(CDVInvokedUrlCommand*)command;
+- (void)pauseLoop:(CDVInvokedUrlCommand*)command;
+- (void)resumeLoop:(CDVInvokedUrlCommand*)command;
 
 @end

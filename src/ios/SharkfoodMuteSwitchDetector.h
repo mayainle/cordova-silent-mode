@@ -17,4 +17,6 @@ typedef void(^SharkfoodMuteSwitchDetectorBlock)(BOOL silent);
 @property (nonatomic,readonly) BOOL isMute;
 @property (nonatomic,copy) SharkfoodMuteSwitchDetectorBlock silentNotify;
 
+- (void)pauseLoop;
+- (void)resumeLoop;
 @end

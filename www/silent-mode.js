@@ -34,4 +34,12 @@ SilentMode.prototype.isMuted = function(successCallback, errorCallback) {
   cordova.exec(successCallback, errorCallback, "SilentMode", "isMuted", []);
 }
 
+SilentMode.prototype.pauseLoop = function(successCallback, errorCallback) {
+  cordova.exec(successCallback, errorCallback, "SilentMode", "pauseLoop", []);
+}
+
+SilentMode.prototype.resumeLoop = function(successCallback, errorCallback) {
+  cordova.exec(successCallback, errorCallback, "SilentMode", "resumeLoop", []);
+}
+
 module.exports = new SilentMode();
