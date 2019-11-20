@@ -2,12 +2,16 @@
 
 I've forked this project from francois-p-peloquin and khevamann. The app plays a sound on loop to determine if silent mode is on or off, it's pretty noticable on older phones.  Added the ability to turn the looping sound off and on
 
-This Cordova plugin checks if the phone ringer has been set to silent mode. Pleas note that this only works for iOS at the moment.
+This Cordova plugin checks if the phone ringer has been set to silent mode. Please note that this only works for iOS at the moment.
 
 ## Installation
 
 ```bash
 cordova plugin add https://github.com/jetstream/cordova-silent-mode
+```
+If using PhoneGap add the following to your config.xml
+```xml
+<plugin name="cordova-silent-mode" spec="https://github.com/jetstream/cordova-silent-mode" />
 ```
 
 ## Usage
