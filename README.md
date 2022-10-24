@@ -11,7 +11,7 @@ cordova plugin add https://github.com/mayainle/cordova-silent-mode
 ```
 If using PhoneGap add the following to your config.xml
 ```xml
-<plugin name="cordova-silent-mode" spec="https://github.com/jetstream/cordova-silent-mode" />
+<plugin name="cordova-silent-mode" spec="https://github.com/mayainle/cordova-silent-mode" />
 ```
 
 ## Usage
